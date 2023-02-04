@@ -7,13 +7,13 @@ export default function Home ({posts,categories,featuredPosts})  {
   return (
     <div className="continer mx-auto  md:px-20 mb-8 w-full">
       <Head>
-        <title>CMS Blog</title>
+        <title>Blog Hub</title>
       </Head>
       <div className='md:m-8 mb-12'>
         <FeaturedPosts posts={featuredPosts}/>
       </div>
       
-      <div  className='grid grid-cols-1 lg:grid-cols-12 gap-12  md:px-20 pb-20'> 
+      <div  className='grid grid-cols-1 lg:grid-cols-12 gap-12  md:px-20 md:pb-20'> 
         <div className=' lg:col-span-8 col-span-1'>
           {posts.map((post,index)=>(
             <PostCard post={post.node} key={post.title}/>

@@ -31,7 +31,7 @@ const PostWidget = ({categories, slug}) => {
         <div className='font-bold text-lg inline p-1 border-b-2 border-b-pink-500'>
           { related ?"Related Posts" :" Recent Posts"}
         </div>  
-        <div className='grid mt-5 mb-10'>
+        <div className='grid mt-5 mb-10 max-w-[20rem] '>
           {relatedPosts.map(post=>(
             
 
