@@ -1,0 +1,23 @@
+
+.post-card-container{
+    sheight: 20rem; 
+}
+
+/* .img-container{
+
+    width: 15rem;
+    height: 15rem;
+
+} */
+
+.title{
+    max-height: 4rem;
+    overflow: hidden;
+}
+.content{
+ 
+    max-height: 4.5rem;
+    overflow: hidden;
+}
+
+
