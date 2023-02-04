@@ -15,7 +15,7 @@ const Comments = ({slug}) => {
     <>
       {comments.length > 0 && (
         <div className='shadow-lg p-8 pb-12 rounded-lg bg-white mb-8 mx-auto w-4/5 md:w-full'>
-            <h3 className='mb-8 text-xl font-semibold border-b pb-4'>
+            <h3 className='mb-8 text-lg font-semibold border-b pb-4'>
               {`${comments.length} `}
               Comments
             </h3>
@@ -23,7 +23,7 @@ const Comments = ({slug}) => {
             <div className='flex flex-col-reverse'>
               {comments.map(comment=>(
                 <div key={comment.createdAt} className='border-b border-gray-100 pb-4 mx-6 mb-4'>
-                  <p className='mb-2 text-xs text-gray-800'>
+                  <p className='mb-1 text-sm text-gray-800'>
                     <span className='font-semibold mr-2'>
                       {`${comment.name}`}
                       

@@ -6,10 +6,10 @@ const Author = ({author}) => {
   return (
     <>
       <div className='bg-white shadow-lg rounded-lg p-6 pb-8 md:p-8 md:pb-12 mb-20  mx-auto w-2/3 md:w-full'>
-        <div className='flex flex-col md:flex-row items-center'>
+        <div className='flex flex-col md:flex-row items-center md:items-start'>
         
-          <div className='rounded-lg mb-8 md:mb-0 md:mr-10 overflow-hidden ' style={{height:"10rem", minWidth:"10rem", width:"10rem"}}>
-            <img src={author.photo ? author.photo.url : "./public/profile_photo_placeholder.png"} alt="" className='object-cover w-full h-full'/>
+          <div className='rounded-lg mb-8 md:mb-0 md:mr-10 overflow-hidden h-[12rem] w-full md:w-40' >
+            <img src={author.photo ? author.photo.url : "/profile_photo_placeholder.png"} alt="" className='object-cover w-full h-full'/>
           </div>
           
       
@@ -26,7 +26,7 @@ const Author = ({author}) => {
                  ))}  
               </div>
           
-              <div className=''>
+              <div className='text-sm md:text-base'>
                 {author.bio}
               </div>
             

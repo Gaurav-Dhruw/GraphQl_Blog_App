@@ -5,7 +5,7 @@ import {getPosts, getCategories, getFeaturedPosts} from '../services'
 
 export default function Home ({posts,categories,featuredPosts})  {
   return (
-    <div className="continer mx-auto px-10 md:px-20 mb-8 w-full">
+    <div className="continer mx-auto  md:px-20 mb-8 w-full">
       <Head>
         <title>CMS Blog</title>
       </Head>

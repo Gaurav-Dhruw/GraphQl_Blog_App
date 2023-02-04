@@ -36,14 +36,14 @@ const PostWidget = ({categories, slug}) => {
             
 
             <Link href={`/post/${post.slug}`} className='transition duration-200 rounded-lg hover:scale-95'>
-              <div className='grid grid-cols-3 md:grid-cols-4 gap-8 p-2'>
-                  <div className='col-span-1 rounded-lg mr-5 overflow-hidden' style={{width:"70px", height:"70px"}}>
+              <div className='grid grid-cols-3 md:gap-2 p-2'>
+                  <div className='col-span-1 justify-self-center rounded-lg  overflow-hidden' style={{width:"70px", height:"70px"}}>
                     <img src={post.featuredImage.url} className='objec-cover w-full h-full '/>
                   </div>
                   
-                  <div className=' col-span-2 md:col-span-3'>
+                  <div className=' col-span-2 '>
                       <div className='pl-1 pb-1'>
-                        <h2 className=' text-sm truncate'>
+                        <h2 className=' text-sm truncate font-semibold'>
                             {post.title} 
                         </h2>
                       </div>
@@ -54,12 +54,7 @@ const PostWidget = ({categories, slug}) => {
                             {moment(post.createAt).format("MMM DD, YYYY")}
                           </span>
                         </div>
-                        <div className="p-1 flex items-center">
-                          <FcClock/>
-                          <span className='ml-2'>
-                            5 mins Read 
-                          </span> 
-                        </div>
+                        
                       </div>
                   </div>
                   

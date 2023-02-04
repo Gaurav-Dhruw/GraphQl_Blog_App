@@ -11,23 +11,23 @@ const PostDetail = ({post}) => {
                 <img src={post.featuredImage.url} className='object-center w-full h-full'/>
             </div>
 
-            <div className='lg:px-16 pb-20'>
+            <div className='lg:px-10 pb-14'>
             
                 <div className='lg:flex mb-5' >
-                    <div className='p-2 mr-4 flex items-center'>
+                    <div className='p-2 md:mr-4 flex items-center'>
                         <FcCalendar/>
                         <span className='ml-2'>
                         Created at: {moment(post.createAt).format("MMM DD, YYYY")}
                         </span>
                     </div>
-                    <div className="p-2 mr-4 flex items-center">
+                    <div className="p-2 md:mr-4 flex items-center">
                         <FcClock/>
                         <span className='ml-2'>
                         5 mins Read 
                         </span> 
                     </div>
                 </div>
-                <div className='font-bold text-2xl md:text-3xl mb-10'>
+                <div className='font-bold text-xl md:text-3xl mb-10'>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, earum.
                 </div>
                 <div>

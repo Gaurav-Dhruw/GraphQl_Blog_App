@@ -68,7 +68,7 @@ const CommentForm = ({slug}) => {
             ref={emailEl}
             placeholder='Email' />
       </div>
-      {error && <p className="text-xs text-red-500" >All fields are required</p>}
+      {error && <p className="text-xs text-red-500" >*All fields are required</p>}
       <button 
           onClick={handlePostSubmission}
           className='transition ease duration-100 mt-5 px-4 py-2 bg-pink-500 text-white active:bg-indigo-800 active:scale-95 rounded-full' 
