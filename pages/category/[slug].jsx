@@ -1,16 +1,10 @@
 import React from 'react'
 import {PostCard, Widget} from '../../components';
-import { getCategorisedPosts, getCategories} from '../../services' 
+import { getCategorisedPosts,getCategories, getFilteredTag} from '../../services' 
 
-const CategoryPost = ({posts,categories, slug}) => {
-    let  tag;
-    categories.forEach(category=>{
-        if(category.slug == slug){
-            tag = category;
-            return;
-        } 
-    });
+const CategoryPost = ({slug,posts, categories,tag}) => {
 
+    
   return (
     <>
         <div className="continer mx-auto  md:px-20 md:pb-20">
@@ -44,12 +38,14 @@ export default CategoryPost
 export async function getStaticProps({params}){
     const posts = await getCategorisedPosts(params.slug);
     const categories = await getCategories();
+    const tag = await getFilteredTag(params.slug);
 
     return{
         props:{
             slug:params.slug,
             posts,
-            categories
+            categories,
+            tag
         }
     }
 }

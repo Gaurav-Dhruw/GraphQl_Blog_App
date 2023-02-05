@@ -113,6 +113,19 @@ export const getCategories = async() =>{
   return result.categories;
 };
 
+export const getFilteredTag = async(slug) =>{
+  const query = gql`
+    query GetCategory($slug:String!) {
+      category(where:{slug:$slug}) {
+        name
+        slug
+      }
+    }
+  `;
+  const result = await request(graphqlAPI,query,{slug});
+  return result.category;
+};
+
 export async function getPostDetails(slug){
     const query = gql`
       query GetPostDetails($slug : String!){
