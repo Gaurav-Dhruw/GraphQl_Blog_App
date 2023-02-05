@@ -1,10 +1,16 @@
 import React, {useState} from 'react'
+import { useRouter } from 'next/router';
 import {getPosts, getPostDetails, getCategories} from '../../services';
-import {PostDetail,CommentForm, Comments, Author,Widget} from '../../components';
+import {PostDetail,CommentForm, Comments, Author,Widget, Loader} from '../../components';
 
 const PostDetails = ({post,categories}) => {
     const [posted,setPosted] = useState('');
-    // console.log(posted);
+    
+    const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
   <>
     <div className="continer mx-auto md:px-20 md:pb-20">

@@ -1,9 +1,14 @@
 import React from 'react'
-import {PostCard, Widget} from '../../components';
+import { useRouter } from 'next/router';
+import {PostCard, Widget, Loader} from '../../components';
 import { getCategorisedPosts,getCategories, getFilteredTag} from '../../services' 
 
 const CategoryPost = ({slug,posts, categories,tag}) => {
+    const router = useRouter();
 
+  if (router.isFallback) {
+    return <Loader />;
+  }
     
   return (
     <>
