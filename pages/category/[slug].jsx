@@ -1,5 +1,5 @@
 import React from 'react'
-import {PostDetail, Categories, PostWidget, CommentForm, Comments, Author,PostCard} from '../../components';
+import {PostCard, Widget} from '../../components';
 import { getCategorisedPosts, getCategories} from '../../services' 
 
 const CategoryPost = ({posts,categories, slug}) => {
@@ -29,13 +29,7 @@ const CategoryPost = ({posts,categories, slug}) => {
                     ))}
                 </div>
                 <div className=' lg:col-span-4 col-span-1'>
-                    <div className='lg:sticky relative top-8'>
-                        <div className='bg-white container shadow-lg p-8 rounded-lg'>
-                            <PostWidget />
-                            <Categories categories={categories}/>
-                        </div>
-                    </div>
-
+                    <Widget categories={categories}/>
                 </div>
             </div>
       
@@ -63,6 +57,6 @@ export async function getStaticPaths(){
     const categories =  await getCategories();
     return {
         paths: categories.map(({slug}) => ({params:{slug}})),
-        fallback: false
+        fallback: true
     }
 }

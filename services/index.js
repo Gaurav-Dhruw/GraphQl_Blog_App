@@ -25,6 +25,7 @@ export const  getPosts = async ()=>{
                 name
                 slug
               }
+              readTime
             }
           }
         }
@@ -133,6 +134,7 @@ export async function getPostDetails(slug){
           }
           createdAt
           slug
+          readTime
           content{
             raw
           }
@@ -186,9 +188,10 @@ export async function postComment(data){
 
 
 export const getComments = async(slug) =>{
+
   const query = gql`
     query GetComments($slug:String!) {
-      comments(where:{post:{slug:$slug}}) {
+      comments(orderBy: createdAt_DESC, first:15, where:{post:{slug:$slug}}) {
         name
         comment
         createdAt

@@ -7,7 +7,8 @@ const PostCard = ({post}) => {
   return (
     <>
       <div className='bg-white md:grid grid-cols-3 shadow-lg rounded-lg p-6  md:p-8 pb-12 mb-10 '>
-          <div className='img-container col-span-1 h-[12rem] md:h-60 w-full  mb-6 md:mb-0 overflow-hidden rounded-lg self-center'>
+          <div className='img-container col-span-1 h-[12rem] md:h-60 w-full  mb-6 md:mb-0 overflow-hidden rounded-md
+          self-center'>
             <Link href={`/category/${post.slug}`}>
               <img src={post.featuredImage.url} alt={post.title} className=' object-cover w-full h-full transform duration-200 hover:scale-110'/>
             </Link>
@@ -31,8 +32,9 @@ const PostCard = ({post}) => {
                       {post.title}  s
                   </Link> 
               </h1>
-              <div className='content  mb-2'>
-                {post.excerpt} df dsf sdf sdfddfdsf sdf sdfsdf  ddg
+              <div className='max-h-[4.5rem];
+    overflow-hidden  mb-2'>
+                {post.excerpt}
               </div>
             </div>
             
@@ -44,12 +46,12 @@ const PostCard = ({post}) => {
                   Created at: {moment(post.createAt).format("MMM DD, YYYY")}
                 </span>
               </div>
-              <div className="p-1 md:p-2 md:mr-4 flex items-center">
+              {post.readTime && <div className="p-1 md:p-2 md:mr-4 flex items-center">
                 <FcClock/>
                 <span className='ml-2'>
-                  5 mins Read 
+                  {post.readTime} mins read 
                 </span> 
-              </div>
+              </div>}
             </div>
         </div>
              

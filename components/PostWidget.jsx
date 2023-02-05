@@ -4,7 +4,7 @@ import { FcCalendar , FcClock} from "react-icons/fc";
 import moment from 'moment'
 import { getRecentPosts, getSimilarPosts } from '../services';
 
-const PostWidget = ({categories, slug}) => {
+const PostWidget = ({controls, categories, slug}) => {
 
   const [related, setRelated] = useState(true);
   let [relatedPosts,setRelatedPosts] = useState([]);
@@ -13,14 +13,18 @@ const PostWidget = ({categories, slug}) => {
       getSimilarPosts(categories,slug).then(result=>{
         setRelated(true);
         setRelatedPosts( result);
+        controls.start({opacity:1,y:0});
       })
     }
     else {
       getRecentPosts().then(result =>{
         setRelated(false);
         setRelatedPosts(result);
+        controls.start({opacity:1,y:0});
       })
     }
+
+    
   
   }, [slug])
 
@@ -35,9 +39,9 @@ const PostWidget = ({categories, slug}) => {
           {relatedPosts.map(post=>(
             
 
-            <Link href={`/post/${post.slug}`} className='transition duration-200 rounded-lg hover:scale-95'>
+            <Link href={`/post/${post.slug}`} className='transition duration-200 hover:scale-95'>
               <div className='grid grid-cols-3 md:gap-2 p-2'>
-                  <div className='col-span-1 justify-self-center rounded-lg  overflow-hidden' style={{width:"70px", height:"70px"}}>
+                  <div className='col-span-1 justify-self-center rounded-md  overflow-hidden' style={{width:"70px", height:"70px"}}>
                     <img src={post.featuredImage.url} className='objec-cover w-full h-full '/>
                   </div>
                   

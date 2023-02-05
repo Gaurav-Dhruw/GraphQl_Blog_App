@@ -1,13 +1,17 @@
-import {PostCard, PostWidget, Categories, FeaturedPosts} from '../components/index'
+
+import {PostCard, PostWidget, Categories, FeaturedPosts, Widget} from '../components/index'
 import Head from 'next/head'
 import {getPosts, getCategories, getFeaturedPosts} from '../services'
 
 
+
 export default function Home ({posts,categories,featuredPosts})  {
+
   return (
     <div className="continer mx-auto  md:px-20 mb-8 w-full">
       <Head>
         <title>Blog Hub</title>
+        <link rel='icon' href='/logo.png'/>
       </Head>
       <div className='md:m-8 mb-12'>
         <FeaturedPosts posts={featuredPosts}/>
@@ -20,13 +24,7 @@ export default function Home ({posts,categories,featuredPosts})  {
           ))}
         </div>
         <div className=' lg:col-span-4 col-span-1'>
-          <div className='lg:sticky relative top-8'>
-            <div className=' bg-white shadow-lg p-6 md:p-8 rounded-lg'>
-              <PostWidget />
-              <Categories categories={categories}/>
-            </div>
-          </div>
-
+            <Widget categories={categories}/>
         </div>
       </div>
       

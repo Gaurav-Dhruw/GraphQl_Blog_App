@@ -1,5 +1,4 @@
 import '../styles/globals.scss'
-import '../styles/post-card.css';
 import React from 'react';
 import {Layout} from '../components';
 

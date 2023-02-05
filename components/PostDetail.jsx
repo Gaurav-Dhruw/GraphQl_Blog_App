@@ -1,13 +1,51 @@
 import React from 'react'
 import moment from 'moment'
-import Link from 'next/link';
+
 import { FcCalendar , FcClock} from "react-icons/fc";
 const PostDetail = ({post}) => {
 
+    const getContentFragment = (index, text, obj, type) => {
+        let modifiedText = text;
+    
+        if (obj) {
+          if (obj.bold) {
+            modifiedText = (<b key={index}>{text}</b>);
+          }
+    
+          if (obj.italic) {
+            modifiedText = (<em key={index}>{text}</em>);
+          }
+    
+          if (obj.underline) {
+            modifiedText = (<u key={index}>{text}</u>);
+          }
+        }
+    
+        switch (type) {
+          case 'heading-three':
+            return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
+          case 'paragraph':
+            return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+          case 'heading-four':
+            return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
+          case 'image':
+            return (
+              <img
+                key={index}
+                alt={obj.title}
+                height={obj.height}
+                width={obj.width}
+                src={obj.src}
+              />
+            );
+          default:
+            return modifiedText;
+        }
+      };
   return (
     <>
-        <div className='bg-white shadow-lg rounded-lg p-8 mb-20'>
-            <div className=' overflow-hidden h-60 md:h-96 mb-14 rounded-xl'>
+        <div className='md:bg-white :bg-gradient-to-b from-transparent to-white shadow-lg rounded-lg p-8 mb-20'>
+            <div className=' overflow-hidden h-60 md:h-96 mb-14 rounded-md'>
                 <img src={post.featuredImage.url} className='object-center w-full h-full'/>
             </div>
 
@@ -20,20 +58,22 @@ const PostDetail = ({post}) => {
                         Created at: {moment(post.createAt).format("MMM DD, YYYY")}
                         </span>
                     </div>
-                    <div className="p-2 md:mr-4 flex items-center">
+                    {post.readTime && <div className="p-2 md:mr-4 flex items-center">
                         <FcClock/>
                         <span className='ml-2'>
-                        5 mins Read 
+                        {post.readTime} mins read 
                         </span> 
-                    </div>
+                    </div>}
                 </div>
                 <div className='font-bold text-xl md:text-3xl mb-10'>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, earum.
+                    {post.title}
                 </div>
-                <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati mollitia aperiam a similique earum, cum placeat doloribus ad harum, ut labore enim, nulla atque magnam pariatur omnis assumenda. Vel eveniet, id aspernatur fugit, voluptatum sed velit molestias et atque deleniti quidem vitae tenetur adipisci, laborum nam. Aperiam pariatur odit veniam omnis. Sequi fugiat unde nesciunt, recusandae placeat quam facere. 
+                <div> 
+                        {post.content.raw.children.map((typeObj, index) => {
+                            const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque provident iste eveniet excepturi explicabo similique quam autem nemo molestias, dolore ipsa! Praesentium, magni impedit obcaecati natus aspernatur quo dolorem quaerat accusamus, facere velit modi perferendis, autem voluptate fugit. Quod aut rem eaque. Odit repellendus perspiciatis voluptatibus qui voluptates commodi molestiae molestias magnam rerum laborum hic sit labore, eligendi eaque velit assumenda nostrum a pariatur. Tempore id ratione porro, sunt, quam quibusdam quaerat aliquam numquam maiores expedita praesentium at repellendus ut reprehenderit accusantium temporibus nemo repellat vero quae sapiente, blanditiis consequatur aspernatur! Animi mollitia necessitatibus, maxime incidunt nisi veritatis illo pariatur.
+                            return getContentFragment(index, children, typeObj, typeObj.type);
+                        })}
                 </div>
             </div>
             

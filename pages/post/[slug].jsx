@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {getPosts, getPostDetails, getCategories} from '../../services';
-import {PostDetail, Categories, PostWidget, CommentForm, Comments, Author} from '../../components';
+import {PostDetail,CommentForm, Comments, Author,Widget} from '../../components';
 
 const PostDetails = ({post,categories}) => {
+    const [posted,setPosted] = useState('');
+    // console.log(posted);
   return (
   <>
     <div className="continer mx-auto md:px-20 md:pb-20">
@@ -10,17 +12,11 @@ const PostDetails = ({post,categories}) => {
             <div className=' lg:col-span-8 col-span-1'>
                 <PostDetail post={post}/> 
                 <Author author={post.author}/>
-                <CommentForm slug={post.slug}/>
-                <Comments slug={post.slug}/>
+                <CommentForm setPosted={setPosted} slug={post.slug}/>
+                <Comments posted={posted} slug={post.slug}/>
             </div>
             <div className=' lg:col-span-4 col-span-1'>
-                <div className='lg:sticky relative top-8'>
-                    <div className='bg-white shadow-lg p-8 rounded-lg mx-auto  md:w-full'>
-                        <PostWidget slug={post.slug} categories={post.categories.map((category) => category.slug)}/>
-                        <Categories categories={categories}/>
-                    </div>
-                </div>
-
+                <Widget categories={categories}/>
             </div>
         </div>
     </div>
@@ -46,6 +42,6 @@ export async function getStaticPaths(){
 
     return {
         paths: posts.map(({node:{slug}}) => ({params:{slug}})),
-        fallback : false
+        fallback : true
     }
 }

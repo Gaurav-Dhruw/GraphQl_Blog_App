@@ -8,8 +8,8 @@ const Author = ({author}) => {
       <div className='bg-white shadow-lg rounded-lg p-6 pb-8 md:p-8 md:pb-12 mb-20  mx-auto w-full'>
         <div className='grid grid-cols-3 gap-6'>
         
-          <div className='justify-self-center rounded-lg overflow-hidden max-h-[12rem] max-w-[10rem]' >
-            <img src={author.photo ? author.photo.url : "/profile_photo_placeholder.png"} alt="" className=' object-cover object-center rounded-lg'/>
+          <div className='justify-self-center rounded-md overflow-hidden max-h-[12rem] max-w-[10rem]' >
+            <img src={author.photo ? author.photo.url : "/profile_photo_placeholder.png"} alt="" className=' object-cover object-center rounded-md'/>
           </div>
           
       
