@@ -13,7 +13,7 @@ export default function Categories({categories}) {
 
       <div className='flex  mt-3 mb-6 p-2 flex-wrap'>
         {categories.map(category=>(
-          <span className='m-2'>
+          <span key={category.slug }className='m-2'>
             <Link href={`/category/${category.slug}`}>
               <span className='trasition duration-200 text-sm px-3 py-1  bg-slate-200 rounded-full  hover:bg-slate-300'>
                   {category.name}

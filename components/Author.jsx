@@ -19,8 +19,9 @@ const Author = ({author}) => {
                   {author.name}
               </div>
               <div className='mt-2 mb-4 flex '>
-                 {author.socialMedia.map(SM =>(
-                  <SocialIcon 
+                 {author.socialMedia.map((SM,index) =>(
+                  <SocialIcon
+                    key={index} 
                     url={SM.url}
                     className=' mr-4  transition duration-500 ease transform hover:-translate-y-1 inline-block cursor-pointer' style={{height:"40px", width:"40px"}}/>
                  ))}  

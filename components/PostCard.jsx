@@ -17,7 +17,7 @@ const PostCard = ({post}) => {
            <div className='grid md:pl-10 col-span-2'>
             <div className='flex flex-wrap mb-6 md:mb-3 '>
               {post.categories.map(category =>(
-                <span className='mr-3 my-2'>
+                <span key={category.slug} className='mr-3 my-2 '>
                 <Link href={`/category/${category.slug}`}>
                     <span className='transform text-sm duration-200 px-3 py-1  bg-slate-200 rounded-xl hover:bg-slate-300'>
                         {category.name}

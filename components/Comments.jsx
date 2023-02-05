@@ -11,7 +11,7 @@ const Comments = ({posted,slug}) => {
   const [comments, setComments] = useState([]);
 
   useEffect(()=>{
-    console.log("UPDATED")
+    // console.log("UPDATED")
     getComments(slug).then(res=>{
       // console.log(res);
       setComments(res);

@@ -38,8 +38,8 @@ const PostWidget = ({controls, categories, slug}) => {
         <div className='grid mt-5 mb-10 max-w-[20rem] '>
           {relatedPosts.map(post=>(
             
-
-            <Link href={`/post/${post.slug}`} className='transition duration-200 hover:scale-95'>
+            
+            <Link key={post.slug} href={`/post/${post.slug}`} className='transition duration-200 hover:scale-95'>
               <div className='grid grid-cols-3 md:gap-2 p-2'>
                   <div className='col-span-1 justify-self-center rounded-md  overflow-hidden' style={{width:"70px", height:"70px"}}>
                     <img src={post.featuredImage.url} className='objec-cover w-full h-full '/>
