@@ -9,7 +9,7 @@ const PostCard = ({post}) => {
       <div className='bg-white md:grid grid-cols-3 shadow-lg rounded-lg p-6  md:p-8 pb-12 mb-10 '>
           <div className='img-container col-span-1 h-[12rem] md:h-60 w-full  mb-6 md:mb-0 overflow-hidden rounded-md
           self-center'>
-            <Link href={`/category/${post.slug}`}>
+            <Link href={`/post/${post.slug}`}>
               <img src={post.featuredImage.url} alt={post.title} className=' object-cover w-full h-full transform duration-200 hover:scale-110'/>
             </Link>
           </div>
