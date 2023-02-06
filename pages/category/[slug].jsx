@@ -18,9 +18,9 @@ const CategoryPost = ({slug,posts, categories,tag}) => {
                 <title>Blog Hub</title>
                 <link rel='icon' href='/logo.png'/>
             </Head>
-            <div className='font-semibold text-center md:text-left md:text-lg mb-10 md:mx-10'>
+            <div className='font-semibold text-center md:text-left md:text-lg mt-10 mb-6 md:mt-0 md:mb-10 md:mx-10'>
                 Filtered Based on Tag :
-                <span className='trasition duration-200 px-3 py-1 ml-5 bg-slate-200 rounded-xl  hover:bg-slate-300 font-normal cursor-pointer text-base'>
+                <span className='trasition whitespace-nowrap duration-200 px-3 py-1 ml-5 bg-slate-200 rounded-xl  hover:bg-slate-300 font-normal cursor-pointer text-base'>
                     {tag.name}
                 </span>
             </div>
