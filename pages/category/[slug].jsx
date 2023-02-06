@@ -20,7 +20,7 @@ const CategoryPost = ({slug,posts, categories,tag}) => {
             </Head>
             <div className='font-semibold md:text-lg px-4 mt-10 md:mt-0 mb-10 md:mx-10'>
                 <span className='mb-3 inline-block'>Filtered Based on Tag :</span> 
-                <span className='trasition inline-block whitespace-nowrap duration-200  px-3 py-1 ml-3 bg-slate-200 rounded-xl text-sm  hover:bg-slate-300 font-normal cursor-pointer'>
+                <span className='trasition inline-block whitespace-nowrap duration-200  px-3 py-1 ml-3 bg-slate-200 rounded-full text-sm  hover:bg-slate-300 font-normal cursor-pointer'>
                     {tag.name}
                 </span>
             </div>
