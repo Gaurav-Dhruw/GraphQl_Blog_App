@@ -22,18 +22,18 @@ export default async function comments (req,res) {
     const query2 = gql`
         mutation PublishComment($id: ID!){
             publishComment(where:{id:$id}, to:PUBLISHED){
-                id
+                comment
+                createdAt
+                name
             }
         }
     `;
     try{
         let result = await graphqlClient.request(query1,req.body);
-
         result = await graphqlClient.request(query2,result.createComment)
-        return res.status(200).send(result);
+        return res.status(200).send(result.publishComment);
     }
     catch(error){
-  
         return res.status(500).send(error);
     }
     

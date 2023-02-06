@@ -4,19 +4,20 @@ import parse from 'html-react-parser';
 import { getComments } from '../services';
 import useSWR from 'swr';
 
-const Comments = ({posted,slug}) => {
+const Comments = ({slug}) => {
   // const {data,error} = useSWR(slug,getComments);
   // console.log(data);
+
 
   const [comments, setComments] = useState([]);
 
   useEffect(()=>{
-    // console.log("UPDATED")
-    getComments(slug).then(res=>{
-      // console.log(res);
-      setComments(res);
-    })
-  },[slug,posted])
+      getComments(slug).then(res=>{
+        setComments(res);
+      })
+
+  },[slug])
+
   
   // if(!data) return <></>;
   return (

@@ -1,9 +1,12 @@
 import React from 'react'
 import {useState, useRef} from 'react';
 import {postComment} from '../services';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
-const CommentForm = ({setPosted,slug}) => {
+const CommentForm = ({slug}) => {
   const [error,setError] = useState(false);
+  const [success,setSuccess] = useState(false);
 
   const nameEl = useRef();
   const emailEl = useRef();
@@ -29,8 +32,13 @@ const CommentForm = ({setPosted,slug}) => {
         nameEl.current.value = "";
         emailEl.current.value = "";
         commentEl.current.value = "";
-        setPosted(res.publishComment.id);
+
+        setSuccess(true);
+        setTimeout(()=>{
+          setSuccess(false);
+        },5000)
       })
+      
 
   };
 
@@ -68,8 +76,13 @@ const CommentForm = ({setPosted,slug}) => {
                 Post Comment
         </button>
       </div>
+     
+      <div className='fixed top-0 left-0 w-full'>
+        {success && <Alert severity="success" >Success - Comment posted!</Alert>}
+      </div>
       
-      
+    
+
     </div>
     </>
   )

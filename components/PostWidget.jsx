@@ -8,6 +8,7 @@ const PostWidget = ({controls, categories, slug}) => {
 
   const [related, setRelated] = useState(true);
   let [relatedPosts,setRelatedPosts] = useState([]);
+
   useEffect(() => {
     if(slug){
       getSimilarPosts(categories,slug).then(result=>{

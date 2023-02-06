@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import {PostCard, Widget, Loader} from '../../components';
 import { getCategorisedPosts,getCategories, getFilteredTag} from '../../services' 
@@ -7,12 +8,16 @@ const CategoryPost = ({slug,posts, categories,tag}) => {
     const router = useRouter();
 
   if (router.isFallback) {
-    return <Loader />;
+    return <Loader/>;
   }
     
   return (
     <>
         <div className="continer mx-auto  md:px-20 md:pb-20">
+            <Head>
+                <title>Blog Hub</title>
+                <link rel='icon' href='/logo.png'/>
+            </Head>
             <div className='font-semibold text-center md:text-left md:text-lg mb-10 md:mx-10'>
                 Filtered Based on Tag :
                 <span className='trasition duration-200 px-3 py-1 ml-5 bg-slate-200 rounded-xl  hover:bg-slate-300 font-normal cursor-pointer text-base'>
@@ -40,7 +45,7 @@ const CategoryPost = ({slug,posts, categories,tag}) => {
 
 export default CategoryPost
 
-export async function getStaticProps({params}){
+export async function getServerSideProps({params}){
     const posts = await getCategorisedPosts(params.slug);
     const categories = await getCategories();
     const tag = await getFilteredTag(params.slug);
@@ -54,10 +59,10 @@ export async function getStaticProps({params}){
         }
     }
 }
-export async function getStaticPaths(){
-    const categories =  await getCategories();
-    return {
-        paths: categories.map(({slug}) => ({params:{slug}})),
-        fallback: true
-    }
-}
+// export async function getStaticPaths(){
+//     const categories =  await getCategories();
+//     return {
+//         paths: categories.map(({slug}) => ({params:{slug}})),
+//         fallback: true
+//     }
+// }
