@@ -17,7 +17,7 @@ const FeaturedPostCard = ({post}) => {
                     {post.categories.map(category =>(
                         <div key={category.slug} className='mr-3 my-2'>
                             <Link href={`/category/${category.slug}`}>
-                                <span className='transform duration-200 px-3 py-1  bg-slate-200 rounded-xl hover:bg-slate-300'>
+                                <span className='transform inline-block duration-200 px-3 py-1  bg-slate-200 rounded-xl hover:bg-slate-300'>
                                     {category.name}
                                 </span>
                             </Link>

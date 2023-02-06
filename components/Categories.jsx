@@ -15,7 +15,7 @@ export default function Categories({categories}) {
         {categories.map(category=>(
           <span key={category.slug }className='m-2'>
             <Link href={`/category/${category.slug}`}>
-              <span className='trasition duration-200 text-sm px-3 py-1  bg-slate-200 rounded-full  hover:bg-slate-300'>
+              <span className='trasition inline-block duration-200 text-sm px-3 py-1  bg-slate-200 rounded-full  hover:bg-slate-300'>
                   {category.name}
               </span>     
             </Link>
